@@ -10,7 +10,7 @@
             @foreach ($activities as $activity)
             <div class="col-lg-4 col-md-6 mt-3">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{ "uploads/activities/$activity->activity_img" }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{  $activity->activity_name}}</h5>
                         <a href="{{ route('show_activity',$activity->id) }}" class="btn btn-info">Show</a>

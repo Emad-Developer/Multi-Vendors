@@ -3,22 +3,23 @@
     Edit Activity {{ $activity->activity_name }} 
 @endsection
 @section('content')
-    
+@include('inc.errors')
 <h2 class="text-center text-warning my-4">Edit Activity</h2>
         <div class="container my-3">
-            <form action="{{ route('update_activity' , $activity->id) }}" method="post">
+            <form action="{{ route('update_activity' , $activity->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Activity</label>
-                    <input type="text" class="form-control" name="activity_name" value={{ $activity->activity_name }}/>
+                    <input type="text" class="form-control" name="activity_name" value = {{ old ('activity_name') ?? $activity->activity_name }}/>
                 </div>
-                {{-- <div class="form-group">
+                <img src="{{ "../../uploads/activities/$activity->activity_img" }}" class="w-25" alt="...">
+                <div class="form-group">
                     <label>Activity Image</label>
                     <input type="file" class="form-control" name="activity_img" />
-                </div> --}}
+                </div>
                 <button type="submit" class="btn btn-primary" name="submit">Update Activity</button>
             </form>
         </div>
 
-
+                
 @endsection
