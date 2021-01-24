@@ -26,8 +26,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href={{ route('create_activity') }}>Add Activity</a>
                 <a class="dropdown-item" href="{{ route('show_activities') }}">Show Activities</a>
-                <a class="dropdown-item" href="#">Add Seller</a>
-                <a class="dropdown-item" href="#">Show Sellers</a>
+                <a class="dropdown-item" href="{{ route('create_seller') }}">Add Seller</a>
+                <a class="dropdown-item" href="{{ route('show_sellers') }}">Show Sellers</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
