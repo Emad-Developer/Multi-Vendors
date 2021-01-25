@@ -7,6 +7,7 @@ use App\Activity;
 
 class ActivityController extends Controller
 {
+    
     public function index()
     {
         $activities = Activity::paginate(3);

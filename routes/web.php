@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Home Page
+Route::get('/home', 'AuthController@home')->name('home');
+
 // Read Activities
 Route::get('/activities', 'ActivityController@index')->name('show_activities');
 Route::get('/activities/show/{id}', 'ActivityController@show')->name('show_activity');
@@ -37,14 +40,19 @@ Route::get('/activities/delete/{id}','ActivityController@delete')->name('delete_
 Route::get('/sellers', 'SellerController@index')->name('show_sellers');
 Route::get('/sellers/show/{id}', 'SellerController@show')->name('show_seller');
 
-// Create Activity
+// Create Seller
 Route::get('/sellers/create','SellerController@create')->name('create_seller');
 Route::post('/sellers/store','SellerController@store')->name('store_seller');
 
-// Update Activity
+// Update Seller
 Route::get('/sellers/edit/{id}','SellerController@edit')->name('edit_seller');
 Route::post('/sellers/update/{id}','SellerController@update')->name('update_seller');
 
-// Delete Activity
+// Delete Seller
 Route::get('/sellers/delete/{id}','SellerController@delete')->name('delete_seller');
 
+// Authentication
+Route::get('/register','AuthController@register')->name('auth_register');
+Route::post('/handleRegister','AuthController@handleRegister')->name('auth_handleRegister');
+
+// Register

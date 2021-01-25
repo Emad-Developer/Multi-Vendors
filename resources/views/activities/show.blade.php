@@ -1,6 +1,7 @@
 @extends('components.layout')
 @section('title')
     {{ $activity->activity_name }}
+    
 @endsection
 @section('content')
 <div class="container mt-3">
