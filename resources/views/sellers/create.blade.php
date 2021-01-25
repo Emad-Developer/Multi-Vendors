@@ -20,7 +20,7 @@
                 {{-- <div class="form-group">
                     <label>Activity</label>
                     <select class="form-control" name="activity_id" value="{{ old('activity_id') }}">
-                        @foreach ($activities as $activity)
+                        @foreach ($seller->activities as $activity)
                             <option value={{ $activity->id }}>{{ $activity->activity_name }}</option>
                         @endforeach
                     </select>
