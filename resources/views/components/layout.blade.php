@@ -37,6 +37,12 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{ route ('auth_register') }}">Register</a>
             </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ route ('auth_login') }}">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ route ('auth_logout') }}">Logout</a>
+            </li>
           </ul>
         </div>
       </nav>

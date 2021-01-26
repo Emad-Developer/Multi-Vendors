@@ -52,7 +52,13 @@ Route::post('/sellers/update/{id}','SellerController@update')->name('update_sell
 Route::get('/sellers/delete/{id}','SellerController@delete')->name('delete_seller');
 
 // Authentication
+// Register
 Route::get('/register','AuthController@register')->name('auth_register');
 Route::post('/handleRegister','AuthController@handleRegister')->name('auth_handleRegister');
 
-// Register
+// Login
+Route::get('/login','AuthController@login')->name('auth_login');
+Route::post('/handleLogin','AuthController@handleLogin')->name('auth_handleLogin');
+
+// Logout
+Route::get('/logout','AuthController@logout')->name('auth_logout');

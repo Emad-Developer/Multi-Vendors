@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function home()
+    {
+        $user = User::get();
+        return view('activities.home',compact('user'));
+    }
+
     public function register()
     {
         return view('auth.register');
@@ -20,25 +26,49 @@ class AuthController extends Controller
         $request->validate([
             'name'=>'required|string|max:100',
             'email'=>'required|email|max:100',
-            'pass'=>'required|string|max:100|min:8',
+            'password'=>'required|string|max:100|min:8',
         ]);
 
         // Create User
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'pass' => Hash::make($request->pass),
+            'password' => Hash::make($request->pass),
         ]);
         // Login 
         Auth::login($user);
 
         // Return
-        return redirect( route('home'));
+        return redirect( route('auth_login'));
+    }
+    
+    public function login()
+    {
+        return view('auth.login');
     }
 
-    public function home()
+    public function handleLogin(Request $request)
     {
-        $user = User::get();
-        return view('activities.home',compact('user'));
+        // Validation
+        $request->validate([
+            'email'=>'required|email|max:100',
+            'password'=>'required|string|max:100|min:8',
+        ]);
+
+        // Auth User
+        $is_login = Auth::attempt(['email' => $request->email, 'password' => $request->pass]);
+        if (!$is_login)
+        {
+            return back();
+        }
+        return redirect( route('home'));
+        // Return
+        return redirect( route('auth_login'));
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect( route('auth_login'));
     }
 }
