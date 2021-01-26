@@ -11,8 +11,7 @@ class AuthController extends Controller
 {
     public function home()
     {
-        $user = User::get();
-        return view('activities.home',compact('user'));
+        return view('activities.home');
     }
 
     public function register()

@@ -3,7 +3,5 @@
     Multi Vendors
 @endsection
 @section('content')
-@foreach ($user as $admin)
-    <h1 class="text-center text-warning mt-3">Welcome {{  $admin->name }}</h1>
-    @endforeach
+    <h1 class="text-center text-warning mt-3">Welcome {{  Auth::user()->name }}</h1>
 @endsection

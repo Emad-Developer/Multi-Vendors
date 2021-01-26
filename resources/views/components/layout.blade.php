@@ -24,25 +24,39 @@
                 Sellers
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('create_activity') }}">Add Activity</a>
-                <a class="dropdown-item" href="{{ route('show_activities') }}">Show Activities</a>
-                <a class="dropdown-item" href="{{ route('create_seller') }}">Add Seller</a>
-                <a class="dropdown-item" href="{{ route('show_sellers') }}">Show Sellers</a>
+                @auth
+                  <a class="dropdown-item" href="{{ route('create_activity') }}">Add Activity</a>
+                @endauth
+                @guest
+                  <a class="dropdown-item" href="{{ route('show_activities') }}">Show Activities</a>
+                @endguest
+                @auth
+                  <a class="dropdown-item" href="{{ route('create_seller') }}">Add Seller</a>
+                @endauth
+                @guest
+                  <a class="dropdown-item" href="{{ route('show_sellers') }}">Show Sellers</a>
+                @endguest
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            @guest
+            <li class="nav-item">
               <a class="nav-link" href="{{ route ('auth_register') }}">Register</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="{{ route ('auth_login') }}">Login</a>
-            </li>
+            </li>    
+            @endguest
+            @auth
             <li class="nav-item active">
+              <a class="nav-link">{{ Auth::user()->name }}</a>
+            </li>    
+            <li class="nav-item ">
               <a class="nav-link" href="{{ route ('auth_logout') }}">Logout</a>
             </li>
+            @endauth    
           </ul>
         </div>
       </nav>
